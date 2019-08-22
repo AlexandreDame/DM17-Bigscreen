@@ -1,6 +1,12 @@
 body {
 	background-color: #8E8E8E;
-	
+
+}
+
+button {
+    float: right;
+
+    margin: 1.5rem 0 1.5rem 0;
 }
 
 .question_block {
@@ -19,8 +25,10 @@ body {
 
 }
 
+
+
 .response_block{
-	background-color: #8E8E8E;
+	background-color: #BCAA89;
 	border: 2px dashed #fff;
 }
 

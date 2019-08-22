@@ -17,12 +17,13 @@
         <div class="form-group question_block">
             <p class="indexQuestion">Question {{ $question->id }} / {{ count($questions) }}</p>
             <p class="StateQuestion">{{ $question->question }}</p>
-            <div class="">
+            <div class="question_block">
                 @if( $question->question_type === "B" )
-                <input type="text" name="reponse_type{{ $question->question_type }}[{{ $question->id }}]" id="reponse_type{{ $question->id }}" class="form-control">
+                <input type="text" required="required" name="reponse_type{{ $question->question_type }}[{{ $question->id }}]" id="reponse_type{{ $question->id }}" class="form-control response_block" value={{old($question->question)}}>
+                
                 @else
-                    <select name="reponse_type{{ $question->question_type }}[{{ $question->id }}]" id="reponse_type{{$question->id}}" class="form-control response_block">
-                        
+                    <select required name="reponse_type{{ $question->question_type }}[{{ $question->id }}]" id="reponse_type{{$question->id}}" class="form-control response_block">
+                        <option value="">Choisissez une réponse</option>
                         @forelse(explode(', ', $question->choix_reponse) as $reponse)
                         <option value="{{ $reponse }}">{{ $reponse }}</option>
                         @empty

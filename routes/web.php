@@ -19,5 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 */
+
 Route::get('','FrontController@index');
 Route::resource('reponse','ReponsesController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('administration', 'Auth\LoginController@showLoginForm')->name('administration');
+Route::post('administration/', 'Auth\LoginController@login');
+Route::get('administration/accueil', 'FrontController@index')->middleware('auth');
