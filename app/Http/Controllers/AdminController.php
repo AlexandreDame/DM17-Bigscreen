@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Question;
+use App\Reponse;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +15,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('back.stat');
+    }
+    
+
+    public function questionnaire() {
+        $questions = Question::all();
+        return view('back.sondage', ['questions' => $questions]);
+    
+    }
+
+    public function reponses() {
+        $questions = Question::all();
+        $reponses = Reponse::all();
+        $user_link = [];
+        foreach($reponses as $reponse) {
+            $user_link[$reponse->user_link] = Reponse::userLink($reponse->user_link)->pluck('reponse', 'question_id');
+        }
+        return view('back.reponses', ['reponse' => $user_link, 'questions' => $questions]);
+    
     }
 
     /**

@@ -14,17 +14,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{ asset('image/bigscreen_logo.png') }}" alt="logo BigScreen" width=300>
-                <ul>
-                    <li><a href="{{ url('administration/accueil') }}">Accueil</a></li>
-                    <li><a href="{{ url('administration/questionnaire') }}">Questionnaire</a></li>
-                    <li><a href="{{ url('administration/responses') }}">Résponses</a></li>
-                </ul>
-
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
+                <nav class="nav flex-column text-center">
+                 <div class="text-center">
+                  <img src="{{ asset('img/bigscreen_logo.png') }}" alt="logo BigScreen" width=300>
+                 </div>
+                  <a class="btn btn-primary mb-2" href="{{ url('administration/accueil') }}" role="button">Accueil</a>
+                  <a class="btn btn-primary mb-2" href="{{ url('administration/questionnaire') }}">Questionnaire</a>
+                  <a class="btn btn-primary mb-2" href="{{ url('administration/reponses') }}">Reponses</a>
+                  <a class="btn btn-primary mb-2" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}</a>
+                </nav>
+                
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>

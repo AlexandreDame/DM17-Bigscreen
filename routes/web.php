@@ -16,18 +16,20 @@
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 */
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('','FrontController@index');
 Route::resource('reponse','ReponsesController');
 Auth::routes();
+Route::get('/{id}', 'FrontController@userReponse')->where('id', '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}');
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('administration', 'Auth\LoginController@showLoginForm')->name('administration');
 Route::post('administration/', 'Auth\LoginController@login');
-Route::get('administration/accueil', 'FrontController@index')->middleware('auth');
+Route::get('administration/accueil', 'AdminController@index')->middleware('auth');
+Route::get('administration/questionnaire', 'AdminController@questionnaire')->middleware('auth');
+Route::get('administration/reponses', 'AdminController@reponses')->middleware('auth');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

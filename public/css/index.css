@@ -12,6 +12,7 @@ button {
 .question_block {
 	width: 750px;
 	margin: 2rem 0 2rem 0;
+	padding:0;
 }
 
 .indexQuestion {
@@ -25,10 +26,9 @@ button {
 
 }
 
-
-
 .response_block{
 	background-color: #BCAA89;
 	border: 2px dashed #fff;
+
 }
 
