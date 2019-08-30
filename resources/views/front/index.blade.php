@@ -4,6 +4,7 @@
 
     <h3 class="text-white">Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</h3>
 
+    
     @if(Session::has('success'))
     <div class="alert alert-success">
         {!! session()->get('success') !!}
