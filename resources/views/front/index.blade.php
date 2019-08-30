@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h3>Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</h3>
+    <h3 class="text-white">Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</h3>
 
     @if(Session::has('success'))
     <div class="alert alert-success">
@@ -14,7 +14,7 @@
         {{ csrf_field() }}
         
         @forelse($questions as $question)
-        <div class="form-group question_block">
+        <div class="form-group question_block text-white">
             <p class="indexQuestion">Question {{ $question->id }} / {{ count($questions) }}</p>
             <p class="StateQuestion">{{ $question->question }}</p>
             <div class="question_block">
@@ -38,7 +38,7 @@
 
         @endforelse
 
-        <button type="submit" class="btn btn-primary">Finaliser</button>
+        <button type="submit" class="btn btn-primary btnStyle">Finaliser</button>
     </form>
 
 @endsection

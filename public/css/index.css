@@ -1,13 +1,17 @@
 body {
-	background-color: #8E8E8E;
+	background: #13225c;
 
 }
 
 button {
-    float: right;
+    float: left;
 
     margin: 1.5rem 0 1.5rem 0;
 }
+
+/******************************/
+/********** FRONT *************/
+/******************************/
 
 .question_block {
 	width: 750px;
@@ -27,8 +31,26 @@ button {
 }
 
 .response_block{
-	background-color: #BCAA89;
+	background-color: #fff;
 	border: 2px dashed #fff;
 
 }
+.btnStyle{
+	background-color: rgba(29,185,241.59);
+}
 
+/******************************/
+/********** BACK **************/
+/******************************/
+
+.sidebar{
+	position: fixed;
+	background-color: #000;
+	height: 100%;
+	border-right: 1px solid #fff;
+}
+
+.content{
+	position: absolute;
+	right: 0;
+}

@@ -3,7 +3,7 @@
 @section('content')
 
     @forelse($reponse as $reponse)
-    <table class="table table-hover table-bordered mt-4 mb-4">
+    <table class="table table-hover table-bordered mt-4 mb-4 text-white">
         <tbody>
             <th>N°</th>
             <th>Intitulé de la question</th>

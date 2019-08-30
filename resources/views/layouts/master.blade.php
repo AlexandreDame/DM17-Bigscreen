@@ -13,7 +13,7 @@
     @if(Request::is('administration/*'))
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 sidebar">
                 <nav class="nav flex-column text-center">
                  <div class="text-center">
                   <img src="{{ asset('img/bigscreen_logo.png') }}" alt="logo BigScreen" width=300>
@@ -29,7 +29,7 @@
                     @csrf
                 </form>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 content">
                 @yield('content')
             </div>
         </div>
