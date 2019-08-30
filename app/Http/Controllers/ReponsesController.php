@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Reponse;
 
+
 class ReponsesController extends Controller
 {
     public function store(Request $request) {
@@ -13,7 +14,8 @@ class ReponsesController extends Controller
         
         $this->validate($request, [
             'reponse_typeA.*' => 'required',
-            'reponse_typeB.*' => 'required|min:1|max:255',
+            'reponse_typeB.1' => 'required|email:filter',
+            'reponse_typeB.*' => 'required|min:1|max:255', 
             'reponse_typeC.*' => 'required|regex:/[1-5]/'
         ]);
 
@@ -40,9 +42,11 @@ class ReponsesController extends Controller
             Si vous désirez consulter vos réponse ultérieurement, vous pouvez consulter
             cette adresse : <br> <a href='".url("/$user_link")."'/>" . url("/$user_link") . " </a>";
         
+        
 
         return redirect('/')->withSuccess($confirm_message); 
-            
+        
+        
         
     }
 }
