@@ -19,6 +19,11 @@ class FrontController extends Controller
         $questions = Question::all();
         $reponses = Reponse::UserLink($userLink)->pluck('reponse', 'question_id');
         
-        return view('front.user_reponse', ['questions' => $questions, 'reponses' => $reponses]);
+        $date_creation = $reponses->pluck('created_at')->first();
+        $newDate = new \DateTime($date_creation);
+        $date = $newDate->format('d.m.Y à H:i:s');
+
+        return view('front.user_reponse', ['questions' => $questions, 'reponses' => $reponses, 'date' => $date]);
+
     }
 }
