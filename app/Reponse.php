@@ -14,7 +14,7 @@ class Reponse extends Model
 
     
 
-	// return responses when user_link === $userLink
+	
 
     public function scopeUserLink($query, $userLink)
     {
@@ -22,7 +22,7 @@ class Reponse extends Model
     }
 
    public function scopeId_question($query, $id) {
-        // return responses where the question_id is equal to the $id
+        
         return $query->where('question_id', $id);
     }
 }

@@ -31,5 +31,5 @@ Route::get('administration/accueil', 'AdminController@index')->middleware('auth'
 Route::get('administration/questionnaire', 'AdminController@questionnaire')->middleware('auth');
 Route::get('administration/reponses', 'AdminController@reponses')->middleware('auth');
 Auth::routes();
-
+Auth::routes(['register' => false, 'reset'=> false]);
 

@@ -4,9 +4,8 @@
 
     <h3 class="text-white">Merci de répondre à toutes les questions et de valider le formulaire en bas de page.</h3>
     
-    
+     
 
-    
     @if(Session::has('success'))
     <div class="alert alert-success">
         {!! session()->get('success') !!}
@@ -30,16 +29,21 @@
                     <select name="reponse_typeA[{{ $question->id }}]" id="reponse{{$question->id}}" class="form-control response_block @error('reponse_typeA.'.$question->id) is-invalid @enderror" >
                         <option value="">Choisissez une réponse</option>
                         @forelse(explode(',', $question->choix_reponse) as $reponse)
-                        <option value="{{$reponse}}">{{ $reponse }}</option>
+                        <option {{old('reponse_typeA.'.$question->id)==$reponse? 'selected' : ''}} value="{{$reponse}}">{{ $reponse }}</option>
                         @empty
                         @endforelse
                     </select>
+                    @if($errors->has('reponse_typeA.'.$question->id)) 
+                    <span class="alert text-danger">{{$errors->first('reponse_typeA.'.$question->id)}}</span>
+                    @endif
                     
                     @break
 
                 @case("B")
-                    <input type="text" name="reponse_typeB[{{ $question->id }}]" id="reponse{{ $question->id }}" class="form-control response_block @error('reponse_typeB.'.$question->id) is-invalid @enderror "  value={{old($question->question)}}>
-                    @if($errors->has('reponse_typeB.1')) <span class="alert text-danger">{{$errors->first('reponse_typeB.1')}}</span>@endif
+                    <input type="text" name="reponse_typeB[{{ $question->id }}]" id="reponse{{ $question->id }}" class="form-control response_block @error('reponse_typeB.'.$question->id) is-invalid @enderror "  value="{{old('reponse_typeB.'.$question->id)}}">
+                    @if($errors->has('reponse_typeB.'.$question->id)) 
+                    <span class="alert text-danger">{{$errors->first('reponse_typeB.'.$question->id)}}</span>
+                    @endif
                     
                     @break
 
@@ -47,11 +51,13 @@
                     <select name="reponse_typeC[{{ $question->id }}]" id="reponse{{$question->id}}" class="form-control response_block @error('reponse_typeC.'.$question->id) is-invalid @enderror" >
                         <option value="">Choisissez une réponse</option>
                         @forelse(explode(',', $question->choix_reponse) as $reponse)
-                        <option value="{{$reponse}}">{{ $reponse }}</option>
+                        <option {{ old('reponse_typeC.'.$question->id)==$reponse? 'selected' : '' }} value="{{$reponse}}">{{ $reponse }}</option>
                         @empty
                         @endforelse
                     </select>
-                    
+                    @if($errors->has('reponse_typeC.'.$question->id)) 
+                    <span class="alert text-danger">{{$errors->first('reponse_typeC.'.$question->id)}}</span>
+                    @endif
                     @break
                 @default
                @endswitch

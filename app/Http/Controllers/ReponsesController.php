@@ -15,15 +15,22 @@ class ReponsesController extends Controller
         
         //dump($request);
         $this->validate($request, [
-           // 'reponse_typeA.*' => 'required',
-            'reponse_typeB.1' => 'required|email:filter',
-           // 'reponse_typeB.*' => 'required|min:1|max:255', 
-           //'reponse_typeC.*' => 'required|regex:/[1-5]/'
+            'reponse_typeA.*' => 'required',
+            'reponse_typeB.*' => 'required|min:5|max:255', 
+            'reponse_typeB.1' => 'required|email',
+            'reponse_typeB.2' => 'required|numeric',
+            'reponse_typeC.*' => 'required|regex:/[1-5]/'
         ],
         [
             
-            'reponse_typeB.1.required' =>'Adresse email non valide'
-             
+            'reponse_typeB.1.email' =>'Adresse email non valide',
+            'reponse_typeB.2.numeric' =>'Veuillez saisir un nombre',
+            'reponse_typeB.*.required' =>'Le champ est vide',
+            'reponse_typeB.*.min'=> 'Le champ doit comporter 5 caractères minimum',
+            'reponse_typeB.*.max'=> 'Le champ doit comporter 255 caractères maximum',
+            'reponse_typeA.*.required' =>'Veuillez sélectionner une réponse',
+            'reponse_typeC.*.required' =>'Veuillez sélectionner une note',
+            'reponse_typeC.*.regex' =>'La note doit être comprise entre 1 et 5'
         ]
         
 
@@ -46,7 +53,7 @@ class ReponsesController extends Controller
                 'user_link'     => $user_link
             ]);
         }
-        $messageB = "Merci de renseigner une adresse email valide !";
+        
         
         $confirm_message ="Toute l’équipe de Bigscreen vous remercie pour votre engagement. Grâce à
             votre investissement, nous vous préparons une application toujours plus
